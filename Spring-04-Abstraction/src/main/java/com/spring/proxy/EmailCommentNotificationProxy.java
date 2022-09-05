@@ -1,7 +1,9 @@
 package com.spring.proxy;
 
 import com.spring.model.Comment;
+import org.springframework.stereotype.Component;
 
+@Component
 public class EmailCommentNotificationProxy implements CommentNotificationProxy {
     @Override
     public void sendComment(Comment comment) {
