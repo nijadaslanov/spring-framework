@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Random;
 
 @Controller
+@RequestMapping("/mentor")
 public class MentorController {
 
     @RequestMapping("/list")
