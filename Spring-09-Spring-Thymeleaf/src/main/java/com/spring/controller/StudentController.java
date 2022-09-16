@@ -3,13 +3,16 @@ package com.spring.controller;
 import com.spring.bootstrap.DataGenerator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("/student")
 public class StudentController {
 
-    @RequestMapping("/register")
+   // @RequestMapping(value = "/register", method = RequestMethod.GET)
+    @GetMapping("/register")
     public String register(Model model) {
 
         model.addAttribute("students", DataGenerator.createStudent());
@@ -17,8 +20,10 @@ public class StudentController {
         return "student/register";
 
     }
-    @RequestMapping("/welcome")
-    public String info(){
+
+   // @RequestMapping(value = "/welcome", method = RequestMethod.POST)
+    @GetMapping("/welcome")
+    public String info() {
 
 
         return "student/welcome";
