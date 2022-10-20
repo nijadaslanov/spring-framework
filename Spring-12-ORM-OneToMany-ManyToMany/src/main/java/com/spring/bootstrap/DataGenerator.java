@@ -1,8 +1,10 @@
 package com.spring.bootstrap;
 
 import com.spring.enums.Status;
+import com.spring.model.Merchant;
 import com.spring.model.Payment;
 import com.spring.model.PaymentDetail;
+import com.spring.repository.MerchantRepository;
 import com.spring.repository.PaymentRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -14,12 +16,13 @@ import java.time.LocalDate;
 public class DataGenerator implements CommandLineRunner {
 
 
-    PaymentRepository paymentRepository;
+    private final PaymentRepository paymentRepository;
+    private final MerchantRepository merchantRepository;
 
-    public DataGenerator(PaymentRepository paymentRepository) {
+    public DataGenerator(PaymentRepository paymentRepository, MerchantRepository merchantRepository) {
         this.paymentRepository = paymentRepository;
+        this.merchantRepository = merchantRepository;
     }
-
 
     @Override
     public void run(String... args) throws Exception {
@@ -34,8 +37,29 @@ public class DataGenerator implements CommandLineRunner {
 
         payment2.setPaymentDetail(paymentDetail2);
 
+        Merchant merchant1 = new Merchant("AmazonSubMerchant", "M123", new BigDecimal("8.28"), new BigDecimal("3.25"), 5);
+
+
+        payment1.setMerchant(merchant1);
+        payment2.setMerchant(merchant1);
+
+        merchantRepository.save(merchant1);
+
         paymentRepository.save(payment1);
         paymentRepository.save(payment2);
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     }
