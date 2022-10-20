@@ -23,6 +23,7 @@ public class Movie extends BaseEntity {
     private String summary;
     @Enumerated(EnumType.STRING)
     private MovieType movieType;
+
     @Enumerated(EnumType.STRING)
     private MovieState movieState;
     private BigDecimal price;
