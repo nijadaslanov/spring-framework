@@ -1,6 +1,7 @@
 package com.spring.bootstrap;
 
 import com.spring.repository.DepartmentRepository;
+import com.spring.repository.EmployeeRepository;
 import com.spring.repository.RegionRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -11,9 +12,12 @@ public class DataGenerator implements CommandLineRunner {
     private final RegionRepository regionRepository;
     private final DepartmentRepository departmentRepository;
 
-    public DataGenerator(RegionRepository regionRepository, DepartmentRepository departmentRepository) {
+     private final EmployeeRepository employeeRepository;
+
+    public DataGenerator(RegionRepository regionRepository, DepartmentRepository departmentRepository, EmployeeRepository employeeRepository) {
         this.regionRepository = regionRepository;
         this.departmentRepository = departmentRepository;
+        this.employeeRepository = employeeRepository;
     }
 
     @Override
@@ -34,6 +38,11 @@ public class DataGenerator implements CommandLineRunner {
         System.out.println("findAllByDepartment(\"toys\") = " + departmentRepository.findAllByDepartment("Toys"));
         System.out.println(departmentRepository.findByDivisionIs("Health"));
         System.out.println(departmentRepository.findByDivisionEquals("Outdoors"));
+        System.out.println("findDistinctTop3ByDivisionContaining(\"Hea\") " + departmentRepository.findDistinctTop3ByDivisionContaining("Hea"));
+
+
+        System.out.println("Employeee Starts");
+        System.out.println("employeeRepository.findAllByEmail(\"tboncoeurr8@ucla.edu\") = " + employeeRepository.findAllByEmail("tboncoeurr8@ucla.edu"));
 
         System.out.println("Department Ends");
 
