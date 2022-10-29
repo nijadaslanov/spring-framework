@@ -1,5 +1,6 @@
 package com.spring.bootstrap;
 
+import com.spring.repository.DepartmentRepository;
 import com.spring.repository.RegionRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -8,9 +9,11 @@ import org.springframework.stereotype.Component;
 public class DataGenerator implements CommandLineRunner {
 
     private final RegionRepository regionRepository;
+    private final DepartmentRepository departmentRepository;
 
-    public DataGenerator(RegionRepository regionRepository) {
+    public DataGenerator(RegionRepository regionRepository, DepartmentRepository departmentRepository) {
         this.regionRepository = regionRepository;
+        this.departmentRepository = departmentRepository;
     }
 
     @Override
@@ -26,6 +29,13 @@ public class DataGenerator implements CommandLineRunner {
         System.out.println(regionRepository.findTop2ByCountry("Canada"));
         System.out.println("------------REGION END---------");
 
+
+        System.out.println("Department Starts");
+        System.out.println("findAllByDepartment(\"toys\") = " + departmentRepository.findAllByDepartment("Toys"));
+        System.out.println(departmentRepository.findByDivisionIs("Health"));
+        System.out.println(departmentRepository.findByDivisionEquals("Outdoors"));
+
+        System.out.println("Department Ends");
 
 
     }
