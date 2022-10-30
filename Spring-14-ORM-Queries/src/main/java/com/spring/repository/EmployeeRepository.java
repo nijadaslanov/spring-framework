@@ -106,7 +106,9 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     List<Employee> getEmployeeEmailIsNull();
 
 
-
+    // Sorting in asc order
+    @Query("SELECT e from Employee e order by e.salary")
+    List<Employee> getEmployeeSalaryOrderAsc();
 
 
 
