@@ -5,7 +5,6 @@ import com.spring.repository.DepartmentRepository;
 import com.spring.repository.EmployeeRepository;
 import com.spring.repository.RegionRepository;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.data.annotation.ReadOnlyProperty;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;

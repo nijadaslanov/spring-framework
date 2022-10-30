@@ -2,6 +2,9 @@ package com.spring.repository;
 
 import com.spring.entity.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -27,7 +30,31 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
     // FIND ALL COURSES BY CATEGORY AND RETURNS STREAM
     List<Course> streamByCategory(String category);
 
-   // Stream<Course> streamByCategory(String category);
+    // Stream<Course> streamByCategory(String category);
+
+
+
+
+
+    @Query("select e from Course e where e.rating>:rating And e.category=:category")
+    List<Course> findAllByCategoryAndRatingGreaterThan(@Param("category") String category, @Param("rating") int rating);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
