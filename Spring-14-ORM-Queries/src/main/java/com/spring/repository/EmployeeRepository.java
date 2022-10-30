@@ -1,9 +1,11 @@
 package com.spring.repository;
 
+import com.spring.entity.Department;
 import com.spring.entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import javax.swing.tree.VariableHeightLayoutCache;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -109,6 +111,22 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     // Sorting in asc order
     @Query("SELECT e from Employee e order by e.salary")
     List<Employee> getEmployeeSalaryOrderAsc();
+
+    @Query(value = "Select * from employee where salary ?1", nativeQuery = true)
+    List<Employee> readEmployeeDetailBySalary(int salary);
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
